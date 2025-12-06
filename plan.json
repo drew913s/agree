@@ -32,68 +32,292 @@
           "id": "Q-14",
           "domain": "security",
           "description": "Encryption, validation, rate limiting",
-          "status": "unassigned",
-          "assigned_to": null,
+          "status": "in_progress",
+          "assigned_to": "autonomous (PID: 1342064)",
           "bricks": [
-            {"name": "rate_limiter", "file": "bricks/security/rate_limiter.py", "description": "Redis-based sliding window rate limiter", "status": "pending", "lines": null, "score": null},
-            {"name": "token_generator", "file": "bricks/security/token_generator.py", "description": "Cryptographically secure token generation", "status": "pending", "lines": null, "score": null},
-            {"name": "encrypt_field", "file": "bricks/security/encrypt_field.py", "description": "AES-256-GCM field-level encryption", "status": "pending", "lines": null, "score": null},
-            {"name": "decrypt_field", "file": "bricks/security/decrypt_field.py", "description": "Field-level decryption", "status": "pending", "lines": null, "score": null},
-            {"name": "hash_chain", "file": "bricks/security/hash_chain.py", "description": "Audit trail integrity hashing", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_pdf", "file": "bricks/security/validate_pdf.py", "description": "PDF security scanning", "status": "pending", "lines": null, "score": null},
-            {"name": "sanitize_input", "file": "bricks/security/sanitize_input.py", "description": "XSS/injection prevention", "status": "pending", "lines": null, "score": null},
-            {"name": "ip_hasher", "file": "bricks/security/ip_hasher.py", "description": "Privacy-preserving IP hashing", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "rate_limiter",
+              "file": "bricks/security/rate_limiter.py",
+              "description": "Redis-based sliding window rate limiter",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "token_generator",
+              "file": "bricks/security/token_generator.py",
+              "description": "Cryptographically secure token generation",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "encrypt_field",
+              "file": "bricks/security/encrypt_field.py",
+              "description": "AES-256-GCM field-level encryption",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "decrypt_field",
+              "file": "bricks/security/decrypt_field.py",
+              "description": "Field-level decryption",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "hash_chain",
+              "file": "bricks/security/hash_chain.py",
+              "description": "Audit trail integrity hashing",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_pdf",
+              "file": "bricks/security/validate_pdf.py",
+              "description": "PDF security scanning",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "sanitize_input",
+              "file": "bricks/security/sanitize_input.py",
+              "description": "XSS/injection prevention",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "ip_hasher",
+              "file": "bricks/security/ip_hasher.py",
+              "description": "Privacy-preserving IP hashing",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
           "id": "Q-10",
           "domain": "storage",
           "description": "GCS abstraction layer",
-          "status": "unassigned",
-          "assigned_to": null,
+          "status": "in_progress",
+          "assigned_to": "autonomous (PID: 1342066)",
           "bricks": [
-            {"name": "save_file", "file": "bricks/storage/save_file.py", "description": "Upload file to storage", "status": "pending", "lines": null, "score": null},
-            {"name": "get_file", "file": "bricks/storage/get_file.py", "description": "Retrieve file from storage", "status": "pending", "lines": null, "score": null},
-            {"name": "delete_file", "file": "bricks/storage/delete_file.py", "description": "Delete file from storage", "status": "pending", "lines": null, "score": null},
-            {"name": "presign_url", "file": "bricks/storage/presign_url.py", "description": "Generate presigned download URL", "status": "pending", "lines": null, "score": null},
-            {"name": "list_files", "file": "bricks/storage/list_files.py", "description": "List files in bucket/prefix", "status": "pending", "lines": null, "score": null},
-            {"name": "file_exists", "file": "bricks/storage/file_exists.py", "description": "Check if file exists", "status": "pending", "lines": null, "score": null},
-            {"name": "get_metadata", "file": "bricks/storage/get_metadata.py", "description": "Get file metadata", "status": "pending", "lines": null, "score": null},
-            {"name": "copy_file", "file": "bricks/storage/copy_file.py", "description": "Copy file within storage", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "save_file",
+              "file": "bricks/storage/save_file.py",
+              "description": "Upload file to storage",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "get_file",
+              "file": "bricks/storage/get_file.py",
+              "description": "Retrieve file from storage",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "delete_file",
+              "file": "bricks/storage/delete_file.py",
+              "description": "Delete file from storage",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "presign_url",
+              "file": "bricks/storage/presign_url.py",
+              "description": "Generate presigned download URL",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "list_files",
+              "file": "bricks/storage/list_files.py",
+              "description": "List files in bucket/prefix",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "file_exists",
+              "file": "bricks/storage/file_exists.py",
+              "description": "Check if file exists",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "get_metadata",
+              "file": "bricks/storage/get_metadata.py",
+              "description": "Get file metadata",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "copy_file",
+              "file": "bricks/storage/copy_file.py",
+              "description": "Copy file within storage",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
           "id": "Q-08",
           "domain": "auth",
           "description": "JWT tokens and secure links",
-          "status": "unassigned",
-          "assigned_to": null,
+          "status": "in_progress",
+          "assigned_to": "autonomous (PID: 1342094)",
           "bricks": [
-            {"name": "create_token", "file": "bricks/auth/create_token.py", "description": "Generate JWT access token", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_token", "file": "bricks/auth/validate_token.py", "description": "Validate and decode JWT", "status": "pending", "lines": null, "score": null},
-            {"name": "refresh_token", "file": "bricks/auth/refresh_token.py", "description": "Generate refresh token", "status": "pending", "lines": null, "score": null},
-            {"name": "password_hash", "file": "bricks/auth/password_hash.py", "description": "Argon2id password hashing", "status": "pending", "lines": null, "score": null},
-            {"name": "verify_password", "file": "bricks/auth/verify_password.py", "description": "Verify password against hash", "status": "pending", "lines": null, "score": null},
-            {"name": "signing_link", "file": "bricks/auth/signing_link.py", "description": "Generate secure signing URL", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_signing_link", "file": "bricks/auth/validate_signing_link.py", "description": "Validate signing token", "status": "pending", "lines": null, "score": null},
-            {"name": "api_key", "file": "bricks/auth/api_key.py", "description": "API key generation and validation", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "create_token",
+              "file": "bricks/auth/create_token.py",
+              "description": "Generate JWT access token",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_token",
+              "file": "bricks/auth/validate_token.py",
+              "description": "Validate and decode JWT",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "refresh_token",
+              "file": "bricks/auth/refresh_token.py",
+              "description": "Generate refresh token",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "password_hash",
+              "file": "bricks/auth/password_hash.py",
+              "description": "Argon2id password hashing",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "verify_password",
+              "file": "bricks/auth/verify_password.py",
+              "description": "Verify password against hash",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "signing_link",
+              "file": "bricks/auth/signing_link.py",
+              "description": "Generate secure signing URL",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_signing_link",
+              "file": "bricks/auth/validate_signing_link.py",
+              "description": "Validate signing token",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "api_key",
+              "file": "bricks/auth/api_key.py",
+              "description": "API key generation and validation",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
           "id": "Q-07",
           "domain": "audit",
           "description": "Immutable event logging",
-          "status": "unassigned",
-          "assigned_to": null,
+          "status": "in_progress",
+          "assigned_to": "autonomous (PID: 1342098)",
           "bricks": [
-            {"name": "log_event", "file": "bricks/audit/log_event.py", "description": "Log audit event with hash chain", "status": "pending", "lines": null, "score": null},
-            {"name": "get_trail", "file": "bricks/audit/get_trail.py", "description": "Retrieve audit trail for document", "status": "pending", "lines": null, "score": null},
-            {"name": "verify_chain", "file": "bricks/audit/verify_chain.py", "description": "Verify audit trail integrity", "status": "pending", "lines": null, "score": null},
-            {"name": "event_types", "file": "bricks/audit/event_types.py", "description": "Event type definitions", "status": "pending", "lines": null, "score": null},
-            {"name": "timestamp", "file": "bricks/audit/timestamp.py", "description": "Secure timestamp generation", "status": "pending", "lines": null, "score": null},
-            {"name": "format_event", "file": "bricks/audit/format_event.py", "description": "Format event for display", "status": "pending", "lines": null, "score": null},
-            {"name": "export_trail", "file": "bricks/audit/export_trail.py", "description": "Export audit trail as PDF/JSON", "status": "pending", "lines": null, "score": null},
-            {"name": "search_events", "file": "bricks/audit/search_events.py", "description": "Search audit events", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "log_event",
+              "file": "bricks/audit/log_event.py",
+              "description": "Log audit event with hash chain",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "get_trail",
+              "file": "bricks/audit/get_trail.py",
+              "description": "Retrieve audit trail for document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "verify_chain",
+              "file": "bricks/audit/verify_chain.py",
+              "description": "Verify audit trail integrity",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "event_types",
+              "file": "bricks/audit/event_types.py",
+              "description": "Event type definitions",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "timestamp",
+              "file": "bricks/audit/timestamp.py",
+              "description": "Secure timestamp generation",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "format_event",
+              "file": "bricks/audit/format_event.py",
+              "description": "Format event for display",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "export_trail",
+              "file": "bricks/audit/export_trail.py",
+              "description": "Export audit trail as PDF/JSON",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "search_events",
+              "file": "bricks/audit/search_events.py",
+              "description": "Search audit events",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         }
       ]
@@ -111,14 +335,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "upload", "file": "bricks/documents/upload.py", "description": "Handle PDF upload", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_pdf", "file": "bricks/documents/validate_pdf.py", "description": "Validate PDF structure", "status": "pending", "lines": null, "score": null},
-            {"name": "page_count", "file": "bricks/documents/page_count.py", "description": "Get PDF page count", "status": "pending", "lines": null, "score": null},
-            {"name": "retrieve", "file": "bricks/documents/retrieve.py", "description": "Retrieve document by ID", "status": "pending", "lines": null, "score": null},
-            {"name": "thumbnail", "file": "bricks/documents/thumbnail.py", "description": "Generate page thumbnail", "status": "pending", "lines": null, "score": null},
-            {"name": "metadata", "file": "bricks/documents/metadata.py", "description": "Extract PDF metadata", "status": "pending", "lines": null, "score": null},
-            {"name": "delete", "file": "bricks/documents/delete.py", "description": "Soft delete document", "status": "pending", "lines": null, "score": null},
-            {"name": "list_documents", "file": "bricks/documents/list_documents.py", "description": "List user documents", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "upload",
+              "file": "bricks/documents/upload.py",
+              "description": "Handle PDF upload",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_pdf",
+              "file": "bricks/documents/validate_pdf.py",
+              "description": "Validate PDF structure",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "page_count",
+              "file": "bricks/documents/page_count.py",
+              "description": "Get PDF page count",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "retrieve",
+              "file": "bricks/documents/retrieve.py",
+              "description": "Retrieve document by ID",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "thumbnail",
+              "file": "bricks/documents/thumbnail.py",
+              "description": "Generate page thumbnail",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "metadata",
+              "file": "bricks/documents/metadata.py",
+              "description": "Extract PDF metadata",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "delete",
+              "file": "bricks/documents/delete.py",
+              "description": "Soft delete document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "list_documents",
+              "file": "bricks/documents/list_documents.py",
+              "description": "List user documents",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
@@ -128,14 +408,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "create_field", "file": "bricks/fields/create_field.py", "description": "Create field on document", "status": "pending", "lines": null, "score": null},
-            {"name": "update_field", "file": "bricks/fields/update_field.py", "description": "Update field properties", "status": "pending", "lines": null, "score": null},
-            {"name": "delete_field", "file": "bricks/fields/delete_field.py", "description": "Delete field from document", "status": "pending", "lines": null, "score": null},
-            {"name": "list_fields", "file": "bricks/fields/list_fields.py", "description": "List fields for document", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_position", "file": "bricks/fields/validate_position.py", "description": "Validate field position", "status": "pending", "lines": null, "score": null},
-            {"name": "field_types", "file": "bricks/fields/field_types.py", "description": "Field type definitions", "status": "pending", "lines": null, "score": null},
-            {"name": "assign_field", "file": "bricks/fields/assign_field.py", "description": "Assign field to signer", "status": "pending", "lines": null, "score": null},
-            {"name": "fill_field", "file": "bricks/fields/fill_field.py", "description": "Fill field with value", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "create_field",
+              "file": "bricks/fields/create_field.py",
+              "description": "Create field on document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "update_field",
+              "file": "bricks/fields/update_field.py",
+              "description": "Update field properties",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "delete_field",
+              "file": "bricks/fields/delete_field.py",
+              "description": "Delete field from document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "list_fields",
+              "file": "bricks/fields/list_fields.py",
+              "description": "List fields for document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_position",
+              "file": "bricks/fields/validate_position.py",
+              "description": "Validate field position",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "field_types",
+              "file": "bricks/fields/field_types.py",
+              "description": "Field type definitions",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "assign_field",
+              "file": "bricks/fields/assign_field.py",
+              "description": "Assign field to signer",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "fill_field",
+              "file": "bricks/fields/fill_field.py",
+              "description": "Fill field with value",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
@@ -145,14 +481,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "add_signer", "file": "bricks/parties/add_signer.py", "description": "Add signer to document", "status": "pending", "lines": null, "score": null},
-            {"name": "remove_signer", "file": "bricks/parties/remove_signer.py", "description": "Remove signer from document", "status": "pending", "lines": null, "score": null},
-            {"name": "list_signers", "file": "bricks/parties/list_signers.py", "description": "List document signers", "status": "pending", "lines": null, "score": null},
-            {"name": "update_signer", "file": "bricks/parties/update_signer.py", "description": "Update signer details", "status": "pending", "lines": null, "score": null},
-            {"name": "signing_order", "file": "bricks/parties/signing_order.py", "description": "Set signing order", "status": "pending", "lines": null, "score": null},
-            {"name": "signer_status", "file": "bricks/parties/signer_status.py", "description": "Get signer status", "status": "pending", "lines": null, "score": null},
-            {"name": "add_cc", "file": "bricks/parties/add_cc.py", "description": "Add CC recipient", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_email", "file": "bricks/parties/validate_email.py", "description": "Validate email address", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "add_signer",
+              "file": "bricks/parties/add_signer.py",
+              "description": "Add signer to document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "remove_signer",
+              "file": "bricks/parties/remove_signer.py",
+              "description": "Remove signer from document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "list_signers",
+              "file": "bricks/parties/list_signers.py",
+              "description": "List document signers",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "update_signer",
+              "file": "bricks/parties/update_signer.py",
+              "description": "Update signer details",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "signing_order",
+              "file": "bricks/parties/signing_order.py",
+              "description": "Set signing order",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "signer_status",
+              "file": "bricks/parties/signer_status.py",
+              "description": "Get signer status",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "add_cc",
+              "file": "bricks/parties/add_cc.py",
+              "description": "Add CC recipient",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_email",
+              "file": "bricks/parties/validate_email.py",
+              "description": "Validate email address",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         }
       ]
@@ -170,14 +562,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "capture_sig", "file": "bricks/signing/capture_sig.py", "description": "Capture signature data", "status": "pending", "lines": null, "score": null},
-            {"name": "apply_sig", "file": "bricks/signing/apply_sig.py", "description": "Apply signature to PDF", "status": "pending", "lines": null, "score": null},
-            {"name": "typed_sig", "file": "bricks/signing/typed_sig.py", "description": "Generate typed signature", "status": "pending", "lines": null, "score": null},
-            {"name": "drawn_sig", "file": "bricks/signing/drawn_sig.py", "description": "Process drawn signature", "status": "pending", "lines": null, "score": null},
-            {"name": "flatten_pdf", "file": "bricks/signing/flatten_pdf.py", "description": "Flatten PDF after signing", "status": "pending", "lines": null, "score": null},
-            {"name": "verify_sig", "file": "bricks/signing/verify_sig.py", "description": "Verify signature authenticity", "status": "pending", "lines": null, "score": null},
-            {"name": "sig_image", "file": "bricks/signing/sig_image.py", "description": "Convert signature to image", "status": "pending", "lines": null, "score": null},
-            {"name": "initials", "file": "bricks/signing/initials.py", "description": "Handle initials field", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "capture_sig",
+              "file": "bricks/signing/capture_sig.py",
+              "description": "Capture signature data",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "apply_sig",
+              "file": "bricks/signing/apply_sig.py",
+              "description": "Apply signature to PDF",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "typed_sig",
+              "file": "bricks/signing/typed_sig.py",
+              "description": "Generate typed signature",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "drawn_sig",
+              "file": "bricks/signing/drawn_sig.py",
+              "description": "Process drawn signature",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "flatten_pdf",
+              "file": "bricks/signing/flatten_pdf.py",
+              "description": "Flatten PDF after signing",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "verify_sig",
+              "file": "bricks/signing/verify_sig.py",
+              "description": "Verify signature authenticity",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "sig_image",
+              "file": "bricks/signing/sig_image.py",
+              "description": "Convert signature to image",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "initials",
+              "file": "bricks/signing/initials.py",
+              "description": "Handle initials field",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
@@ -187,14 +635,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "state_machine", "file": "bricks/workflow/state_machine.py", "description": "Document state transitions", "status": "pending", "lines": null, "score": null},
-            {"name": "transition", "file": "bricks/workflow/transition.py", "description": "Execute state transition", "status": "pending", "lines": null, "score": null},
-            {"name": "current_state", "file": "bricks/workflow/current_state.py", "description": "Get current document state", "status": "pending", "lines": null, "score": null},
-            {"name": "complete_check", "file": "bricks/workflow/complete_check.py", "description": "Check if signing complete", "status": "pending", "lines": null, "score": null},
-            {"name": "send_document", "file": "bricks/workflow/send_document.py", "description": "Send document for signing", "status": "pending", "lines": null, "score": null},
-            {"name": "void_document", "file": "bricks/workflow/void_document.py", "description": "Void document", "status": "pending", "lines": null, "score": null},
-            {"name": "expire_check", "file": "bricks/workflow/expire_check.py", "description": "Check document expiration", "status": "pending", "lines": null, "score": null},
-            {"name": "next_signer", "file": "bricks/workflow/next_signer.py", "description": "Determine next signer", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "state_machine",
+              "file": "bricks/workflow/state_machine.py",
+              "description": "Document state transitions",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "transition",
+              "file": "bricks/workflow/transition.py",
+              "description": "Execute state transition",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "current_state",
+              "file": "bricks/workflow/current_state.py",
+              "description": "Get current document state",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "complete_check",
+              "file": "bricks/workflow/complete_check.py",
+              "description": "Check if signing complete",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "send_document",
+              "file": "bricks/workflow/send_document.py",
+              "description": "Send document for signing",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "void_document",
+              "file": "bricks/workflow/void_document.py",
+              "description": "Void document",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "expire_check",
+              "file": "bricks/workflow/expire_check.py",
+              "description": "Check document expiration",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "next_signer",
+              "file": "bricks/workflow/next_signer.py",
+              "description": "Determine next signer",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
@@ -204,14 +708,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "send_email", "file": "bricks/notifications/send_email.py", "description": "Send email via SendGrid", "status": "pending", "lines": null, "score": null},
-            {"name": "send_invite", "file": "bricks/notifications/send_invite.py", "description": "Send signing invitation", "status": "pending", "lines": null, "score": null},
-            {"name": "send_reminder", "file": "bricks/notifications/send_reminder.py", "description": "Send signing reminder", "status": "pending", "lines": null, "score": null},
-            {"name": "send_complete", "file": "bricks/notifications/send_complete.py", "description": "Send completion notice", "status": "pending", "lines": null, "score": null},
-            {"name": "email_template", "file": "bricks/notifications/email_template.py", "description": "Email template definitions", "status": "pending", "lines": null, "score": null},
-            {"name": "render_email", "file": "bricks/notifications/render_email.py", "description": "Render email from template", "status": "pending", "lines": null, "score": null},
-            {"name": "delivery_status", "file": "bricks/notifications/delivery_status.py", "description": "Check email delivery status", "status": "pending", "lines": null, "score": null},
-            {"name": "unsubscribe", "file": "bricks/notifications/unsubscribe.py", "description": "Handle unsubscribe", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "send_email",
+              "file": "bricks/notifications/send_email.py",
+              "description": "Send email via SendGrid",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "send_invite",
+              "file": "bricks/notifications/send_invite.py",
+              "description": "Send signing invitation",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "send_reminder",
+              "file": "bricks/notifications/send_reminder.py",
+              "description": "Send signing reminder",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "send_complete",
+              "file": "bricks/notifications/send_complete.py",
+              "description": "Send completion notice",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "email_template",
+              "file": "bricks/notifications/email_template.py",
+              "description": "Email template definitions",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "render_email",
+              "file": "bricks/notifications/render_email.py",
+              "description": "Render email from template",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "delivery_status",
+              "file": "bricks/notifications/delivery_status.py",
+              "description": "Check email delivery status",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "unsubscribe",
+              "file": "bricks/notifications/unsubscribe.py",
+              "description": "Handle unsubscribe",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         }
       ]
@@ -229,14 +789,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "doc_routes", "file": "bricks/api/doc_routes.py", "description": "Document API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "field_routes", "file": "bricks/api/field_routes.py", "description": "Field API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "sign_routes", "file": "bricks/api/sign_routes.py", "description": "Signing API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "party_routes", "file": "bricks/api/party_routes.py", "description": "Party API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "auth_routes", "file": "bricks/api/auth_routes.py", "description": "Auth API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "template_routes", "file": "bricks/api/template_routes.py", "description": "Template API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "chat_routes", "file": "bricks/api/chat_routes.py", "description": "Chat/AI API routes", "status": "pending", "lines": null, "score": null},
-            {"name": "error_handler", "file": "bricks/api/error_handler.py", "description": "Global error handler", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "doc_routes",
+              "file": "bricks/api/doc_routes.py",
+              "description": "Document API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "field_routes",
+              "file": "bricks/api/field_routes.py",
+              "description": "Field API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "sign_routes",
+              "file": "bricks/api/sign_routes.py",
+              "description": "Signing API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "party_routes",
+              "file": "bricks/api/party_routes.py",
+              "description": "Party API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "auth_routes",
+              "file": "bricks/api/auth_routes.py",
+              "description": "Auth API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "template_routes",
+              "file": "bricks/api/template_routes.py",
+              "description": "Template API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "chat_routes",
+              "file": "bricks/api/chat_routes.py",
+              "description": "Chat/AI API routes",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "error_handler",
+              "file": "bricks/api/error_handler.py",
+              "description": "Global error handler",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
@@ -246,14 +862,70 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "create_template", "file": "bricks/templates/create_template.py", "description": "Save document as template", "status": "pending", "lines": null, "score": null},
-            {"name": "list_templates", "file": "bricks/templates/list_templates.py", "description": "List user templates", "status": "pending", "lines": null, "score": null},
-            {"name": "get_template", "file": "bricks/templates/get_template.py", "description": "Retrieve template", "status": "pending", "lines": null, "score": null},
-            {"name": "delete_template", "file": "bricks/templates/delete_template.py", "description": "Delete template", "status": "pending", "lines": null, "score": null},
-            {"name": "template_fields", "file": "bricks/templates/template_fields.py", "description": "Define fillable variables", "status": "pending", "lines": null, "score": null},
-            {"name": "parse_variables", "file": "bricks/templates/parse_variables.py", "description": "Extract {{variable}} placeholders", "status": "pending", "lines": null, "score": null},
-            {"name": "fill_template", "file": "bricks/templates/fill_template.py", "description": "Populate template with values", "status": "pending", "lines": null, "score": null},
-            {"name": "clone_to_doc", "file": "bricks/templates/clone_to_doc.py", "description": "Create document from template", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "create_template",
+              "file": "bricks/templates/create_template.py",
+              "description": "Save document as template",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "list_templates",
+              "file": "bricks/templates/list_templates.py",
+              "description": "List user templates",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "get_template",
+              "file": "bricks/templates/get_template.py",
+              "description": "Retrieve template",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "delete_template",
+              "file": "bricks/templates/delete_template.py",
+              "description": "Delete template",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "template_fields",
+              "file": "bricks/templates/template_fields.py",
+              "description": "Define fillable variables",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "parse_variables",
+              "file": "bricks/templates/parse_variables.py",
+              "description": "Extract {{variable}} placeholders",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "fill_template",
+              "file": "bricks/templates/fill_template.py",
+              "description": "Populate template with values",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "clone_to_doc",
+              "file": "bricks/templates/clone_to_doc.py",
+              "description": "Create document from template",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         },
         {
@@ -263,16 +935,86 @@
           "status": "blocked",
           "assigned_to": null,
           "bricks": [
-            {"name": "parse_intent", "file": "bricks/automations/parse_intent.py", "description": "Understand user command via Claude", "status": "pending", "lines": null, "score": null},
-            {"name": "extract_entities", "file": "bricks/automations/extract_entities.py", "description": "Extract names, emails, values", "status": "pending", "lines": null, "score": null},
-            {"name": "match_template", "file": "bricks/automations/match_template.py", "description": "Find matching template", "status": "pending", "lines": null, "score": null},
-            {"name": "build_questions", "file": "bricks/automations/build_questions.py", "description": "Generate clarifying questions", "status": "pending", "lines": null, "score": null},
-            {"name": "validate_answers", "file": "bricks/automations/validate_answers.py", "description": "Validate user responses", "status": "pending", "lines": null, "score": null},
-            {"name": "execute_send", "file": "bricks/automations/execute_send.py", "description": "Orchestrate document send", "status": "pending", "lines": null, "score": null},
-            {"name": "voice_to_text", "file": "bricks/automations/voice_to_text.py", "description": "Whisper transcription", "status": "pending", "lines": null, "score": null},
-            {"name": "conversation_state", "file": "bricks/automations/conversation_state.py", "description": "Track multi-turn conversation", "status": "pending", "lines": null, "score": null},
-            {"name": "text_to_voice", "file": "bricks/automations/text_to_voice.py", "description": "TTS for responses", "status": "pending", "lines": null, "score": null},
-            {"name": "automation_log", "file": "bricks/automations/automation_log.py", "description": "Log automation executions", "status": "pending", "lines": null, "score": null}
+            {
+              "name": "parse_intent",
+              "file": "bricks/automations/parse_intent.py",
+              "description": "Understand user command via Claude",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "extract_entities",
+              "file": "bricks/automations/extract_entities.py",
+              "description": "Extract names, emails, values",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "match_template",
+              "file": "bricks/automations/match_template.py",
+              "description": "Find matching template",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "build_questions",
+              "file": "bricks/automations/build_questions.py",
+              "description": "Generate clarifying questions",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "validate_answers",
+              "file": "bricks/automations/validate_answers.py",
+              "description": "Validate user responses",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "execute_send",
+              "file": "bricks/automations/execute_send.py",
+              "description": "Orchestrate document send",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "voice_to_text",
+              "file": "bricks/automations/voice_to_text.py",
+              "description": "Whisper transcription",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "conversation_state",
+              "file": "bricks/automations/conversation_state.py",
+              "description": "Track multi-turn conversation",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "text_to_voice",
+              "file": "bricks/automations/text_to_voice.py",
+              "description": "TTS for responses",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            },
+            {
+              "name": "automation_log",
+              "file": "bricks/automations/automation_log.py",
+              "description": "Log automation executions",
+              "status": "pending",
+              "lines": null,
+              "score": null
+            }
           ]
         }
       ]

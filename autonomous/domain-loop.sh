@@ -93,8 +93,19 @@ total_bricks() {
 
 check_for_blockers() {
     if [ -f "$PROGRESS_FILE" ]; then
-        local blockers=$(grep -A 5 "## Blockers" "$PROGRESS_FILE" | grep -v "^##" | grep -v "^\s*$" | head -3)
-        if [ -n "$blockers" ] && [ "$blockers" != "None" ]; then
+        local blockers=$(grep -A 5 "## Blockers" "$PROGRESS_FILE" | grep -v "^##" | grep -v "^\s*$" | grep -v "^-*$" | head -3)
+        # Ignore placeholder text and empty values
+        if [ -n "$blockers" ]; then
+            # Skip if it's just "None", "none", or template placeholder
+            case "$blockers" in
+                None|none|"[Anything Claude is stuck on - triggers notification]"|"(none)"|"N/A"|"n/a")
+                    return
+                    ;;
+            esac
+            # Skip if it's only whitespace
+            if [ -z "$(echo "$blockers" | tr -d '[:space:]')" ]; then
+                return
+            fi
             echo "$blockers"
         fi
     fi
@@ -197,7 +208,6 @@ EOF
 ---
 
 ## Blockers
-None
 
 ---
 

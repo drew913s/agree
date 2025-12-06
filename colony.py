@@ -448,6 +448,226 @@ def cmd_assign(args: argparse.Namespace, plan: dict) -> None:
     print(f"{C['red']}Error: Domain '{args.domain_id}' not found{C['reset']}")
 
 
+# ============== Autonomous Mode Commands ==============
+
+AUTONOMOUS_DIR = Path(__file__).parent / "autonomous"
+PID_DIR = AUTONOMOUS_DIR / "progress"
+
+DOMAIN_MAP = {
+    "Q-14": "security", "Q-10": "storage", "Q-08": "auth", "Q-07": "audit",
+    "Q-01": "documents", "Q-02": "fields", "Q-03": "signing", "Q-04": "workflow",
+    "Q-05": "parties", "Q-06": "notifications", "Q-09": "api",
+    "Q-12": "templates", "Q-13": "automations"
+}
+
+WAVE_DOMAINS = {
+    1: ["Q-14", "Q-10", "Q-08", "Q-07"],
+    2: ["Q-01", "Q-02", "Q-05"],
+    3: ["Q-03", "Q-04", "Q-06"],
+    4: ["Q-09", "Q-12", "Q-13"]
+}
+
+
+def get_running_domains() -> list:
+    """Get list of currently running domain loops."""
+    running = []
+    if not PID_DIR.exists():
+        return running
+    for pid_file in PID_DIR.glob("Q-*.pid"):
+        domain_id = pid_file.stem
+        try:
+            pid = int(pid_file.read_text().strip())
+            # Check if process is running
+            os.kill(pid, 0)
+            running.append({"domain_id": domain_id, "pid": pid})
+        except (ProcessLookupError, ValueError):
+            # Process not running, clean up stale PID file
+            pid_file.unlink(missing_ok=True)
+    return running
+
+
+def cmd_start(args: argparse.Namespace, plan: dict) -> None:
+    """Start autonomous build for a domain."""
+    import subprocess
+
+    domain_id = args.domain_id.upper()
+    if domain_id not in DOMAIN_MAP:
+        print(f"{C['red']}Error: Unknown domain '{domain_id}'{C['reset']}")
+        return
+
+    domain_name = DOMAIN_MAP[domain_id]
+    spec_file = AUTONOMOUS_DIR / "specs" / f"{domain_id}-{domain_name.upper()}.md"
+
+    if not spec_file.exists():
+        print(f"{C['red']}Error: Spec file not found: {spec_file}{C['reset']}")
+        print(f"Create it first: autonomous/specs/{domain_id}-{domain_name.upper()}.md")
+        return
+
+    # Check if already running
+    running = get_running_domains()
+    for r in running:
+        if r["domain_id"] == domain_id:
+            print(f"{C['yellow']}{domain_id} is already running (PID: {r['pid']}){C['reset']}")
+            return
+
+    # Start the domain loop
+    loop_script = AUTONOMOUS_DIR / "domain-loop.sh"
+    log_file = AUTONOMOUS_DIR / "progress" / f"{domain_id}.log"
+
+    print(f"{C['cyan']}Starting autonomous build for {domain_id} ({domain_name})...{C['reset']}")
+
+    # Run in background
+    with open(log_file, "a") as log:
+        proc = subprocess.Popen(
+            [str(loop_script), domain_id],
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            cwd=str(Path(__file__).parent),
+            start_new_session=True
+        )
+
+    # Update plan
+    for wave in plan["waves"]:
+        for p in wave["princesses"]:
+            if p["id"] == domain_id:
+                p["status"] = "in_progress"
+                p["assigned_to"] = f"autonomous (PID: {proc.pid})"
+                save_plan(plan)
+                break
+
+    if args.json:
+        print(json.dumps({"success": True, "domain_id": domain_id, "pid": proc.pid}))
+    else:
+        print(f"{C['green']}Started {domain_id} (PID: {proc.pid}){C['reset']}")
+        print(f"Logs: {log_file}")
+
+
+def cmd_stop(args: argparse.Namespace, plan: dict) -> None:
+    """Stop a running domain loop."""
+    import signal
+
+    domain_id = args.domain_id.upper()
+    pid_file = PID_DIR / f"{domain_id}.pid"
+
+    if not pid_file.exists():
+        print(f"{C['yellow']}{domain_id} is not running{C['reset']}")
+        return
+
+    try:
+        pid = int(pid_file.read_text().strip())
+        os.kill(pid, signal.SIGTERM)
+        pid_file.unlink(missing_ok=True)
+
+        # Update plan
+        for wave in plan["waves"]:
+            for p in wave["princesses"]:
+                if p["id"] == domain_id:
+                    p["status"] = "stopped"
+                    p["assigned_to"] = None
+                    save_plan(plan)
+                    break
+
+        if args.json:
+            print(json.dumps({"success": True, "domain_id": domain_id, "pid": pid}))
+        else:
+            print(f"{C['green']}Stopped {domain_id} (PID: {pid}){C['reset']}")
+
+    except ProcessLookupError:
+        pid_file.unlink(missing_ok=True)
+        print(f"{C['yellow']}{domain_id} was not running (stale PID file removed){C['reset']}")
+    except Exception as e:
+        print(f"{C['red']}Error stopping {domain_id}: {e}{C['reset']}")
+
+
+def cmd_start_wave(args: argparse.Namespace, plan: dict) -> None:
+    """Start all domains in a wave."""
+    wave_num = int(args.wave_num)
+
+    if wave_num not in WAVE_DOMAINS:
+        print(f"{C['red']}Error: Invalid wave number. Use 1-4{C['reset']}")
+        return
+
+    domains = WAVE_DOMAINS[wave_num]
+    started = []
+    skipped = []
+
+    for domain_id in domains:
+        spec_file = AUTONOMOUS_DIR / "specs" / f"{domain_id}-{DOMAIN_MAP[domain_id].upper()}.md"
+        if not spec_file.exists():
+            skipped.append(f"{domain_id} (no spec)")
+            continue
+
+        # Check if already running
+        running = get_running_domains()
+        if any(r["domain_id"] == domain_id for r in running):
+            skipped.append(f"{domain_id} (already running)")
+            continue
+
+        # Create mock args and start
+        class MockArgs:
+            def __init__(self, did):
+                self.domain_id = did
+                self.json = args.json
+
+        cmd_start(MockArgs(domain_id), plan)
+        started.append(domain_id)
+
+    if args.json:
+        print(json.dumps({"wave": wave_num, "started": started, "skipped": skipped}))
+    else:
+        print(f"\n{C['bold']}Wave {wave_num} Summary:{C['reset']}")
+        print(f"  Started: {', '.join(started) if started else 'none'}")
+        if skipped:
+            print(f"  Skipped: {', '.join(skipped)}")
+
+
+def cmd_stop_all(args: argparse.Namespace, plan: dict) -> None:
+    """Stop all running domain loops."""
+    running = get_running_domains()
+
+    if not running:
+        print(f"{C['yellow']}No domains are currently running{C['reset']}")
+        return
+
+    stopped = []
+    for r in running:
+        class MockArgs:
+            def __init__(self, did):
+                self.domain_id = did
+                self.json = False
+
+        cmd_stop(MockArgs(r["domain_id"]), plan)
+        stopped.append(r["domain_id"])
+
+    if args.json:
+        print(json.dumps({"stopped": stopped}))
+    else:
+        print(f"\n{C['green']}Stopped {len(stopped)} domain(s){C['reset']}")
+
+
+def cmd_ps(args: argparse.Namespace, plan: dict) -> None:
+    """Show running autonomous processes."""
+    running = get_running_domains()
+
+    if args.json:
+        print(json.dumps({"running": running}))
+        return
+
+    if not running:
+        print(f"{C['dim']}No autonomous processes running{C['reset']}")
+        return
+
+    print(f"\n{C['bold']}Running Autonomous Processes{C['reset']}\n")
+    print(f"{'Domain':<10} {'PID':<10} {'Domain Name':<15}")
+    print("-" * 40)
+
+    for r in running:
+        domain_name = DOMAIN_MAP.get(r["domain_id"], "unknown")
+        print(f"{r['domain_id']:<10} {r['pid']:<10} {domain_name:<15}")
+
+    print()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Colony Manager - Ant Colony Development Dashboard",
@@ -463,12 +683,21 @@ Commands:
   complete <domain/brick> Mark a brick as complete
   assign <ID> <window>    Assign domain to a Claude window
 
+Autonomous Mode:
+  start <ID>              Start autonomous build for a domain
+  stop <ID>               Stop a running domain loop
+  start-wave <N>          Start all domains in wave N (1-4)
+  stop-all                Stop all running domain loops
+  ps                      Show running autonomous processes
+
 Examples:
   python colony.py plan
   python colony.py status --json
   python colony.py session Q-14
   python colony.py complete security/rate_limiter
-  python colony.py assign Q-14 "Claude Window 2"
+  python colony.py start Q-14
+  python colony.py start-wave 1
+  python colony.py ps
 """
     )
 
@@ -496,6 +725,19 @@ Examples:
     assign_parser.add_argument("domain_id", help="Domain ID or name")
     assign_parser.add_argument("window_name", help="Claude window identifier")
 
+    # Autonomous mode commands
+    start_parser = subparsers.add_parser("start", help="Start autonomous build for domain")
+    start_parser.add_argument("domain_id", help="Domain ID (e.g., Q-14)")
+
+    stop_parser = subparsers.add_parser("stop", help="Stop running domain loop")
+    stop_parser.add_argument("domain_id", help="Domain ID (e.g., Q-14)")
+
+    start_wave_parser = subparsers.add_parser("start-wave", help="Start all domains in wave")
+    start_wave_parser.add_argument("wave_num", help="Wave number (1-4)")
+
+    subparsers.add_parser("stop-all", help="Stop all running domain loops")
+    subparsers.add_parser("ps", help="Show running autonomous processes")
+
     args = parser.parse_args()
 
     if not args.command:
@@ -513,6 +755,11 @@ Examples:
         "validate": cmd_validate,
         "complete": cmd_complete,
         "assign": cmd_assign,
+        "start": cmd_start,
+        "stop": cmd_stop,
+        "start-wave": cmd_start_wave,
+        "stop-all": cmd_stop_all,
+        "ps": cmd_ps,
     }
 
     if args.command in commands:

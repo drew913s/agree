@@ -92,20 +92,23 @@ total_bricks() {
 }
 
 check_for_blockers() {
+    # Check PROGRESS.md for blockers section
     if [ -f "$PROGRESS_FILE" ]; then
-        local blockers=$(grep -A 5 "## Blockers" "$PROGRESS_FILE" | grep -v "^##" | grep -v "^\s*$" | grep -v "^-*$" | head -3)
-        # Ignore placeholder text and empty values
-        if [ -n "$blockers" ]; then
-            # Skip if it's just "None", "none", or template placeholder
-            case "$blockers" in
-                None|none|"[Anything Claude is stuck on - triggers notification]"|"(none)"|"N/A"|"n/a")
-                    return
-                    ;;
-            esac
-            # Skip if it's only whitespace
-            if [ -z "$(echo "$blockers" | tr -d '[:space:]')" ]; then
-                return
-            fi
+        local blockers=$(grep -A 10 "## Blockers" "$PROGRESS_FILE" | \
+            grep -v "^##" | \
+            grep -v "^---" | \
+            grep -v "^\s*$" | \
+            grep -vi "^none$" | \
+            grep -v "^\[Anything Claude is stuck on" | \
+            grep -v "^\[Write any blockers" | \
+            grep -v "^No blockers" | \
+            grep -v "^(Bricks move here" | \
+            grep -v "^(none)" | \
+            grep -vi "^n/a$" | \
+            head -5)
+
+        # Only return if there's actual content (not just whitespace)
+        if [ -n "$blockers" ] && [ -n "$(echo "$blockers" | tr -d '[:space:]')" ]; then
             echo "$blockers"
         fi
     fi

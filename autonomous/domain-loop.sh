@@ -97,6 +97,7 @@ check_for_blockers() {
         local blockers=$(grep -A 10 "## Blockers" "$PROGRESS_FILE" | \
             grep -v "^##" | \
             grep -v "^---" | \
+            grep -v "^|" | \
             grep -v "^\s*$" | \
             grep -vi "^none$" | \
             grep -v "^\[Anything Claude is stuck on" | \
